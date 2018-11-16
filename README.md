@@ -23,7 +23,7 @@ from app import views
 ```
 
 ### views.py
-# conding=utf-8
+> conding=utf-8
 from flask import render_template, request, url_for, redirect
 from flask import send_from_directory
 from app import appinfo_caculator
@@ -68,3 +68,37 @@ def download_file(space_name, file_name):
         space_support.get_space_path(space_name),
         file_name,
         as_attachment=True)
+
+### space_support.py
+> coding=utf-8
+import os
+from app import app
+PATH = os.getcwd() + app.config['LOG_SPACE']
+
+
+def get_space():
+    return os.listdir(PATH)
+
+
+def get_space_files(space_name):
+    return os.listdir(PATH + space_name)
+
+
+def get_space_path(space_name):
+    return PATH + space_name
+
+
+def add_space(space_name):
+    if space_name:
+        if not os.path.exists(PATH + space_name):
+            os.makedirs(PATH + space_name)
+
+
+def upload_file(space_name, files):
+    for file in files:
+        file.save(PATH + space_name + '/' + file.filename)
+
+
+def delete_file(space_name, file_name):
+    path = PATH + space_name + '/' + file_name
+    os.remove(path)
