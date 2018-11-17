@@ -102,3 +102,6 @@ def upload_file(space_name, files):
 def delete_file(space_name, file_name):
     path = PATH + space_name + '/' + file_name
     os.remove(path)
+
+
+docker run -d --name OriyaoFlask -p 80:80 -p 1922:22 -v /home/FTP-Flask/appdir:/app --privileged=true -e FLASK_APP=main.py -e FLASK_DEBUG=1 oriyaoflaskimage flask run --host=0.0.0.0 --port=80
