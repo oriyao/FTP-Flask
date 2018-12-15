@@ -9,6 +9,13 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="root@47.52.200.168:1922">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/app" local="$PROJECT_DIR$/appdir" />
+          </mappings>
+        </serverdata>
+      </paths>
     </serverData>
     <option name="myAutoUpload" value="ALWAYS" />
   </component>
